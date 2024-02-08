@@ -23,10 +23,8 @@ const myComponent = () => React.createElement('h1', null, 'Componente declarado 
 ```
 No es obligatorio usar React con JSX pero es lo recomendado debido a que nos simplifica bastante el código que tenemos que escribir para declarar nuestros componentes.
 
-### Tips:
-
-Usa jsx como estándar en tus proyectos debido a que es lo más popular cuando veas el código de terceros, documentación y tutoriales.
-Jsx y expresiones de javascript
+> Usa jsx como estándar en tus proyectos debido a que es lo más popular cuando veas el código de terceros, documentación y tutoriales.
+## Jsx y expresiones de javascript
 Ya que Jsx es javascript puro, es posible ejecutar expresiones de javascript dentro del mismo.
 
 Una expresión de javascript es una sentencia del tipo:
@@ -49,12 +47,12 @@ const Grettings = () => React.createElement('h1', null, 'Hello, ', name)
 ```
 Como puedes apreciar, para colocar expresiones se hace entre llaves ().
 
-Tips:
 
-Utiliza expresiones de javascript para aplicar lógica en jsx. De esto veremos más adelante.
-Jsx if y else
+
+> Utiliza expresiones de javascript para aplicar lógica en jsx. De esto veremos más adelante.
+## Jsx if y else
 Podemos usar condicionales dentro de la sintaxis Jsx.
-
+```
 const Grettings = (name) => {
   if (name) {
     return <h1>Hello {name}</h1>
@@ -62,13 +60,14 @@ const Grettings = (name) => {
     return <h1>Hello?</h1>
   }
 }
+```
 En este ejemplo, estamos pasando por parámetro la variable name y en la condición mostramos un mensaje u otro según si name tiene valor o no.
 
 Más adelante vamos a ver diferentes maneras de renderizado condicional.
 
 Jsx y atributos
 Ya que usamos Jsx para declarar elementos a mostrar en el navegador, también podemos especificar los atributos de dichos elementos.
-
+```
 const myElement = <div id="element">Mi elemento</div>
 
 // equivalente transpilado
@@ -80,22 +79,24 @@ const myElement = React.createElement(
   },
   'Mi elemento'
 )
+```
 Como puedes ver, nos resulta muy familiar la sintaxis de Jsx pero recuerda que Jsx es javascript puro, no html, es por ello que he colocado el equivalente transpilado.
 
 Otros ejemplos.
-
+```
 const Avatar = (user) => <img src={user.photo} />
 
 const getSum = (n1, n2) => n1 + n2
 
 const Result = () => <h1>{getSum(1, 2)}</h1>
-Tips:
+```
 
-Usa comillas para valores que son una cadena
-Usa llaves para valores diferentes a una cadena como un número, una función, propiedad de un objeto, etc.
-Jsx y childrens o hijos.
+
+>Usa comillas para valores que son una cadena
+>Usa llaves para valores diferentes a una cadena como un número, una función, propiedad de un objeto, etc.
+## Jsx y childrens o hijos.
 Podemos anidar tantos elementos como deseemos con jsx.
-
+```
 const myElement = (post) => {
   return (
     <div>
@@ -105,14 +106,15 @@ const myElement = (post) => {
     </div>
   )
 }
+```
 En este ejemplo estamos colocando elementos h1 y h2 de manera normal, pero nota que el img no tiene una etiqueta de cierre. Esto es debido a que no es necesario declararla porque no vamos a definir ningún valor.
 
 Esta es una gran diferencia entre html y jsx.
 
-Tips:
 
-Solo coloca etiquetas de cierre cuando realmente sean necesarias. Es válido que una etiqueta se cierre del tipo <img /> en lugar de <img></img>
-React components
+
+>Solo coloca etiquetas de cierre cuando realmente sean necesarias. Es válido que una etiqueta se cierre del tipo <img /> en lugar de <img></img>
+## React components
 Un componente es una pieza independiente de nuestra UI y tiene las siguientes características:
 
 Es aislado.
@@ -123,7 +125,7 @@ Una analogía de los componentes son las piezas de lego. Una pieza de lego es in
 Un componente puede estar constituido por una o más unidades llamadas elementos. Por ejemplo, el div, img, span, p, h1, todos estos son elementos.
 
 Y con jsx, podemos usar tanto elementos como componentes definidos por nosotros.
-
+```
 const Title = () => <h1>My Title</h1>
 
 const Header = () => {
@@ -133,17 +135,18 @@ const Header = () => {
     </header>
   )
 }
+```
 Más adelante profundizaremos en la composición de componentes, es decir, la manera en que podemos usar los componentes para formar otros componentes en el mismo sentido que podemos usar piezas de lego para formar otras piezas más grandes.
 
-Tips:
 
-Define tus componentes siempre con letra mayúscula, esto le indica a React que es un componente y no un elemento html como un div, img, etc. Ejemplo: React va a tratar a div como un elemento html mientras que Title como un componente.
+
+>Define tus componentes siempre con letra mayúscula, esto le indica a React que es un componente y no un elemento html como un div, img, etc. Ejemplo: React va a tratar a div como un elemento html mientras que Title como un componente.
 Por último, los dos tipos irreductibles de componentes básicos de React son:
 
-Componentes funcionales. Definidos por medio de una función de javascript.
+## Componentes funcionales. Definidos por medio de una función de javascript.
 Componentes clase. Definidos por medio de clases de ES6.
 A partir de estos dos tipos de componentes, existen más categorías que veremos en la parte de Tipos de componentes.
-
+```
 // componente funcional
 const myComponent = () => <p>Hello world</p>
 
@@ -153,22 +156,24 @@ class OtherComponent extends React.Component {
     return <p>Hello world</p>
   }
 }
+```
 Ambos ejemplos anteriores son equivalentes a la hora de definir un componente. Vamos a profundizar más en el componente de tipo clase en la parte de estado y ciclos de vida.
 
-Renderizar componentes
+## Renderizar componentes
 La manera de renderizar un componente en una aplicación es por medio de una utilidad llamada ReactDOM.
-
+```
 const MyComponent = () => <h1>Mi componente</h1>;
 
 ReactDOM.render(<MyComponent />, document.getElementById(‘root’));
 render acepta dos parámetros: un componente y el lugar del DOM donde queremos que se monte.
+```
 
-Tips:
 
-Comúnmente se usa el div con id igual a root y es lo recomendado.
-Si estás creando una app de React desde cero, define un solo render para tu app.
-Si estás integrando React a una app existente, es válido y común que existan varios render con diferentes divs e ids.
-React Props
+
+> Comúnmente se usa el div con id igual a root y es lo recomendado.
+> Si estás creando una app de React desde cero, define un solo render para tu app.
+> Si estás integrando React a una app existente, es válido y común que existan varios render con diferentes divs e ids.
+## React Props
 También podemos hacer una analogía de los componentes como una función.
 
 Una función puede recibir parámetros y ejecutar operaciones o procesos.
@@ -184,28 +189,36 @@ Las funciones dinámicas son aquellas que dados los mismos parámetros, no siemp
 Si vemos a los componentes como funciones puras, podemos crear piezas más reutilizables en nuestra UI.
 
 El ejemplo más claro es un componente que tenga un mensaje de bienvenida a un usuario.
-
+```
 const Greetings = () => <h1>Hola Fulano!</h1>
+```
 Si queremos saludar a un usuario con otro nombre, no vamos a crear otro componente. Imagina tener 1000 usuarios con diferentes nombres, crear 1000 componentes solo para eso no es para nada óptimo.
 
 Lo que hacemos es crear un solo componente que nos permita pasar por parámetro el valor que deseemos.
-
+```
 const Greetings = (props) => <h1>Hola {props.name}!</h1>
 
 // implementación
 
 <Greetings name=”perengano” />
+```
 Este ejemplo de componente es como una función pura debido a que dado el mismo parámetro, siempre obtendremos el mismo resultado.
 
 Pues bien, los props es un objeto de javascript que es pasado como un parámetro a un componente tal y como lo hicimos en el ejemplo anterior. Props viene de properties o propiedades.
 
 Con esto ya has aprendido lo que son los props!
 
-Tips:
 
-Los props son solo de lectura, esto significa que no debes cambiarles su valor.
-Ya que props es un objeto, puedes lo puedes desestructurar del modo: const MyComp = ({ name }) => <h1>{name}</h1>.
-Los valores de los props pueden ser: un objeto, array, cadena, número, función, incluso componentes o elementos. También hay un prop especial llamado children que es el contenido hijo de un componente, ejemplo: <Title>Mi título <Title />, accederias: const Title = (props) => <h1>{props.children}</h1> donde children es igual a “Mi título”.
+
+> Los props son solo de lectura, esto significa que no debes cambiarles su valor.
+Ya que props es un objeto, puedes lo puedes desestructurar del modo: 
+```
+const MyComp = ({ name }) => <h1>{name}</h1>.
+```
+Los valores de los props pueden ser: un objeto, array, cadena, número, función, incluso componentes o elementos. También hay un prop especial llamado children que es el contenido hijo de un componente, ejemplo: 
+```
+<Title>Mi título <Title />, accederias: const Title = (props) => <h1>{props.children}</h1> donde children es igual a “Mi título”.
+```
 Existe una herramienta llamada prop-types qué nos sirve para validar el tipado de los props que recibe un componente, úsala siempre.
 State y ciclo de vida de un componente
 El estado de un componente es la manera en que un componente puede controlar valores privados o internos.
@@ -215,7 +228,7 @@ A diferencia de los props que son solo de lectura y no pueden ser modificados po
 Actualmente existen dos maneras de definir el estado: Por medio del hook useState (lo verás en la parte de react hooks, useState) Por medio de componentes definidos con clases de ES6 (lo verás más a detalle en la parte de tipos de componentes).
 
 Vamos a ver un ejemplo de un componente que actualizará estado cada segundo solo como ejemplo.
-
+```
 class Counter extends React.Component {
   constructor(props) {
     super(props)
@@ -236,6 +249,7 @@ class Counter extends React.Component {
 }
 
 React.render(<Counter />, document.getElementById('app'))
+```
 Corriendo el ejemplo anterior, vamos a notar que el componente actualiza el contador de manera correcta!
 
 Nota: no es recomendable usar el setInterval en el constructor, vamos a cambiarlo a continuación.
@@ -258,7 +272,7 @@ Cuando ya se montó en el DOM.
 Cuando se ha actualizado el componente (la actualización de un prop o del state).
 Cuando se va a desmontar del DOM.
 Veamos un ejemplo en código.
-
+```
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -285,6 +299,7 @@ class Button extends React.Component {
     return (<h1>{this.state.name}</h1>);
   }
 }
+```
 Al ejecutar este código, veremos los console logs en la consola del navegador.
 
 Este es el orden en que se ejecuta este componente:
@@ -313,7 +328,7 @@ Buen lugar para limpiar las suscripciones que hayas hecho en componentDidMount.
 No llames setState aquí debido a que el componente será desmontado y no seguirá existiendo.
 React list
 La manera de renderizar un listado de elementos en react es por medio de arrays y el método map (propio del prototype de Array de javascript).
-
+```
 const ListNames = () => {
   const names = ['John', 'Smith', 'Lulu']
 
@@ -325,14 +340,15 @@ const ListNames = () => {
     </ul>
   )
 }
+```
 Si corremos este código, veremos que funciona correctamente.
 
 Pero veremos un warning en la consola:
 
 Warning: Each child in a list should have a unique "key" prop.
 
-Esto es debido a que necesitamos proporcionar el prop key en los elementos de la lista, en este caso, los <li>.
-
+Esto es debido a que necesitamos proporcionar el prop key en los elementos de la lista, en este caso, los ```<li>```.
+```
 const ListNames = () => {
   const names = ['John', 'Smith', 'Lulu']
 
@@ -344,21 +360,23 @@ const ListNames = () => {
     </ul>
   )
 }
+```
 Las keys existen para indicarle a React qué elementos han cambiado, han sido agregados o han sido removidos.
 
 También puedes asignar el resultado de un map a una variable y luego usar esa variable para renderizar el contenido:
-
+```
 const ListNames = () => {
   const names = ['John', 'Smith', 'Lulu']
   const listNames = names.map((name) => <li key={name}>{name}</li>)
 
   return <ul>{listNames}</ul>
 }
+```
 Recordemos que jsx nos permite usar expresiones de javascript.
 
-Tips:
 
-Cuando hagas listas de elementos (independientemente de que los elementos sean li, p, h1, componentes, etc;) siempre proporciona el prop key.
+
+>  Cuando hagas listas de elementos (independientemente de que los elementos sean li, p, h1, componentes, etc;) siempre proporciona el prop key.
 Los valores de las keys deben ser únicos entre hermanos.
 Si los datos que estas listando provienen de una api, por lo común tendrán una propiedad de id, ese lo puedes usar como valor de key. Ejemplo: values: [{ id: 1, name: ‘john’ }, { id: 2, name ‘joana’ }].
 React js formularios
@@ -367,7 +385,7 @@ La manera básica y más común de manejar formularios en React consiste en hace
 Un formulario controlado consiste en un formulario cuyos valores y eventos son controlados por React.
 
 Vamos a ver un ejemplo de un formulario que no está siendo controlado por React y después vamos a controlarlo progresivamente.
-
+```
 const Form = () => {
   return (
     <form>
@@ -379,10 +397,11 @@ const Form = () => {
     </form>
   )
 }
+```
 Hasta aquí nada nuevo, esto tiene el comportamiento por default de un formulario en html.
 
 Para controlar los valores del formulario, necesitamos usar el estado del componente. En este ejemplo, va a ser con un componente de tipo clase.
-
+```
 class Form extends React.Component {
   constructor(props) {
     super(props)
@@ -403,12 +422,13 @@ class Form extends React.Component {
     )
   }
 }
+```
 Vamos a notar que cuando escribimos en el input, no actualiza ningún valor. Incluso en la consola marca warning:
 
 Failed prop type: You provided a value prop to a form field without an onChange handler. This will render a read-only field. If the field should be mutable use defaultValue. Otherwise, set either onChange or readOnly.
 
 Necesitamos agregar un manejador del evento change en el input para que se actualice el estado.
-
+```
 class Form extends React.Component {
   constructor(props) {
     super(props)
@@ -438,6 +458,7 @@ class Form extends React.Component {
     )
   }
 }
+```
 onChange es el manejador del evento change del input y cuando el usuario modifique el valor del mismo, va a ejecutar el callback que en este caso es this.handleChange.
 
 Ya que es un manejador de evento, recibe por valor el objeto event que contiene todo lo relativo al evento desencadenado. En este caso, el objeto event tiene una propiedad target que a su vez es un objeto que tiene la propiedad value.
@@ -446,9 +467,9 @@ e.target.value es el valor del input que desencadenó el evento.
 
 Para el evento submit usamos this.handleSubmit. En este caso ejecutamos e.preventDefault, una función del objeto event para prevenir que se ejecute el comportamiento default (recargar la página). Después ejecutamos un alert con los valores del estado.
 
-React formulario con múltiples inputs
+### React formulario con múltiples inputs
 Para un formulario que contiene múltiples inputs, podemos hacer lo siguiente:
-
+```
 class Form extends React.Component {
   constructor(props) {
     super(props)
@@ -493,6 +514,7 @@ class Form extends React.Component {
     )
   }
 }
+```
 La clave aquí es el handleChange. Lo que hacemos es dinámicamente cambiar el contenido de state.
 
 Considera:
@@ -501,24 +523,26 @@ this.setState({ [e.target.name]: e.target.value });
 Esta sintaxis es propia de javascript.
 
 e.target.name va a ser igual al valor name que tenga el input, lo que equivale a:
-
+```
 this.setState({ [‘address’]: e.target.value });
+```
 Suponiendo que haya sido el input address el que haya sido modificado. Los corchetes es una manera de indicar la propiedad del objeto.
-
+```
 this.setState({ [‘address’]: e.target.value });
 
 this.setState({ address: e.target.value });
+```
 Estos dos ejemplos son equivalentes e igualmente válidos.
 
 Entonces, cuando otro input sea cambiado, e.target.name tendra el nombre del input que hizo el cambio. De esta manera estamos actualizando el estado de manera dinámica.
 
-Tips:
 
-Saca provecho de las propiedades name y value del objeto e.target para actualizar el estado de un formulario de manera dinámica.
+
+> Saca provecho de las propiedades name y value del objeto e.target para actualizar el estado de un formulario de manera dinámica.
 Recuerda que hay eventos (onChange, onSubmit, etc) y manejadores de eventos que son funciones donde nosotros colocamos la lógica de lo que queremos hacer con el formulario.
 En la parte de React hooks vamos a ver este mismo ejemplo pero usando los hooks de react.
 
-Tipos de componentes de React
+## Tipos de componentes de React
 Existen dos tipos de componentes básicos:
 
 De tipo clase.
@@ -535,7 +559,7 @@ Hasta antes de la llegada de los hooks de React, a los componentes de tipo clase
 
 Sin embargo, actualmente ya no es válida esa separación debido a que un componente tipo function ya puede tener un estado usando el hook useState.
 
-Smart y Dumb components
+## Smart y Dumb components
 Esta categorización de componentes es meramente conceptual y se basa en separar los componentes por el tipo de responsabilidad que se les asigna.
 
 Fue presentado por Dan Abramov, coautor de react redux y create-react-app.
@@ -549,6 +573,3 @@ Sin embargo, el propio Dan Abramov ha comentado que con la llegada de los hooks 
 Por lo que no ahondaremos demasiado en este aspecto.
 
 React hooks
-Ahora que tienes las nociones básicas de React JS, entra a este mega post donde te explico todo lo que necesitas saber sobre los React Hooks.
-
-Siguientes pasos.
